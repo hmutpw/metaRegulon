@@ -2,13 +2,14 @@
 % Please edit documentation in R/metaRegulon.R
 \name{metaRegulon}
 \alias{metaRegulon}
-\title{Inferring the gene regulatory network and estimating the transcriotonal factors using metaRegulon}
+\title{Inferring the gene regulatory network and estimating the transcription factor activity using metaRegulon}
 \usage{
 metaRegulon(
   obj,
-  use_species = c("human", "mouse"),
+  use_species = c("human", "mouse", "other"),
   project_name = "Regulon_analysis",
   prior_net = NULL,
+  tf_gene = NULL,
   grn_net_type = c("auto", "top5", "top10"),
   force_repeat = FALSE,
   out_path = "./",
@@ -27,13 +28,18 @@ metaRegulon(
 network, please use standard three-column data.frame with regulators, targets,
 and weights. Default: NULL, pan-tissue network.}
 
+\item{tf_gene}{The TF gene symbols used for regulon analysis. To use a custom
+TF list, please ensure to match the symbol in expression matrix and prior-network.
+Default: NULL, human TF symbol.}
+
 \item{grn_net_type}{The method used for extracting TF-target network from gene
 regulatory networks. The "auto" representing "aracne", while the "top5" and
 "top10" representing the top 5% and 10% targets of each regulator are retained
 for regulon network integration. Default: "auto".}
 
 \item{force_repeat}{Whether to overwrite the files for the intermediate results.
-Default: FALSE.}
+If you want to continue with the results calculated from last time, please set
+this option to FALSE. Default: FALSE.}
 
 \item{out_path}{The output files for the project.}
 
@@ -45,9 +51,11 @@ Default: FALSE.}
 An \code{SingleCellExperiment} object.
 }
 \description{
-Inferring the gene regulatory network and estimating the transcriotonal factors using metaRegulon
+Inferring the gene regulatory network and estimating the transcription factors activity using metaRegulon.
 }
 \examples{
+data(test_obj)
+test_obj <- metaRegulon(obj = test_obj, use_species = "mouse", ncores = 4, force_repeat = TRUE)
 
 
 }
