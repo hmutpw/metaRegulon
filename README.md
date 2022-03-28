@@ -9,4 +9,5 @@ The metaRegulon aims to provide a comprehensive platform for transcription facto
 #### To introduce the application of TF activities in single-cell assays, we introduce some of the cases:
 
 Case study I: [Cell-type specificity analysis during HSC development in mouse embryos](https://hmutpw.github.io/metaRegulon/Case1.html)
+
 Case study II: [Decoding the dynamic TF activity during HSC formation](https://hmutpw.github.io/metaRegulon/Case2.html)
