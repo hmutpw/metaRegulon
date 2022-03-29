@@ -267,9 +267,7 @@ pre code {
 computational framework including gene regulatory networks (GRNs) 
 inference and transcription factor (TF) activity estimation for 
 single-cell RNA sequencing data. This vignette introduced the detailed 
-usage of <strong>metaRegulon</strong> and a few case studies for the application of TF activity calculated with <strong>metaRegulon</strong>. To learn the application of this package, please refer to:</p>
-<p><strong>Case study I</strong>: <a href="https://hmutpw.github.io/metaRegulon/Case1.html">Identifying cell-type specificlly activited regulons during HSCs development in mouse embryos</a></p>
-<p><strong>Case study II</strong>: <a href="https://hmutpw.github.io/metaRegulon/Case2.html">Decoding the dynamic TF activity during HSC formation</a></p>
+usage of <strong>metaRegulon</strong> and a few case studies for the application of TF activity calculated with <strong>metaRegulon</strong>.</p>
 <div id="runing-metaregulon" class="section level3">
 <h3>1. Runing metaRegulon</h3>
 <div id="installing-packages" class="section level4">
@@ -280,8 +278,7 @@ install the following dependant packages:</p>
 <pre class="r"><code class="hljs"><span class="hljs-comment">#install.packages("devtools", repos = "https://cran.rstudio.com/")</span>
 <span class="hljs-comment">#devtools::install_github("hmutpw/PUIC")</span>
 <span class="hljs-comment">#devtools::install_github("hmutpw/scATFR")</span>
-<span class="hljs-comment">#devtools::install_github("hmutpw/metaRegulon")</span>
-suppressMessages(suppressWarnings(<span class="hljs-keyword">library</span>(metaRegulon)))</code></pre>
+<span class="hljs-comment">#devtools::install_github("hmutpw/metaRegulon")</span></code></pre>
 </div>
 <div id="creating-the-object" class="section level4">
 <h4>1.2 Creating the object</h4>
@@ -291,7 +288,9 @@ suppressMessages(suppressWarnings(<span class="hljs-keyword">library</span>(meta
 <p>If the input data is saved as an expression matrix in the plain text 
 file (with tab or common separator), we can just create the object with 
 function <code>scATFR()</code> from <code>scATFR</code> package.</p>
-<pre class="r"><code class="hljs">suppressMessages(suppressWarnings(<span class="hljs-keyword">library</span>(scATFR)))
+<pre class="r"><code class="hljs">suppressMessages(suppressWarnings(<span class="hljs-keyword">library</span>(PUIC)))
+suppressMessages(suppressWarnings(<span class="hljs-keyword">library</span>(scATFR)))
+suppressMessages(suppressWarnings(<span class="hljs-keyword">library</span>(metaRegulon)))
 exp_data &lt;- readRDS(system.file(<span class="hljs-string">"./extdata/test_exp_data.rds"</span>,package = <span class="hljs-string">"scATFR"</span>))
 col_data &lt;- readRDS(system.file(<span class="hljs-string">"./extdata/test_col_data.rds"</span>,package = <span class="hljs-string">"scATFR"</span>))
 atfr &lt;- scATFR(exp_data = exp_data, col_data = col_data)
@@ -383,41 +382,41 @@ TFs) into homologenes, then replace these data through parameters <code>prior_ne
 ## [5] LC_TIME=Chinese (Simplified)_China.936    
 ## 
 ## attached base packages:
-## [1] parallel  stats4    stats     graphics  grDevices utils     datasets 
+## [1] stats4    parallel  stats     graphics  grDevices utils     datasets 
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] scATFR_0.1.9                stringr_1.4.0              
-##  [3] progress_1.2.2              kSamples_1.2-9             
-##  [5] SuppDists_1.1-9.7           glmnet_4.1-3               
-##  [7] Matrix_1.3-4                factoextra_1.0.7           
-##  [9] cvTools_0.3.2               robustbase_0.93-9          
-## [11] lattice_0.20-44             Radviz_0.9.2               
-## [13] ROCR_1.0-11                 PUIC_0.1.0                 
-## [15] reshape2_1.4.4              minet_3.50.0               
-## [17] pbapply_1.5-0               AUCell_1.14.0              
-## [19] scater_1.20.1               ggplot2_3.3.5              
-## [21] scuttle_1.2.0               jaccard_0.1.0              
-## [23] qvalue_2.24.0               dplyr_1.0.8                
-## [25] purrr_0.3.4                 ppcor_1.1                  
-## [27] MASS_7.3-54                 scLink_1.0.1               
-## [29] glasso_1.11                 RcisTarget_1.12.0          
-## [31] fgsea_1.18.0                SeuratObject_4.0.4         
-## [33] Seurat_4.1.0                GENIE3_1.14.0              
-## [35] SingleCellExperiment_1.14.1 SummarizedExperiment_1.22.0
-## [37] Biobase_2.52.0              GenomicRanges_1.44.0       
-## [39] GenomeInfoDb_1.28.1         IRanges_2.26.0             
-## [41] S4Vectors_0.30.0            BiocGenerics_0.38.0        
-## [43] MatrixGenerics_1.4.0        matrixStats_0.59.0         
-## [45] metaRegulon_0.1.0          
+##  [1] metaRegulon_0.1.0           scATFR_0.1.9               
+##  [3] stringr_1.4.0               progress_1.2.2             
+##  [5] kSamples_1.2-9              SuppDists_1.1-9.7          
+##  [7] glmnet_4.1-3                Matrix_1.3-4               
+##  [9] factoextra_1.0.7            cvTools_0.3.2              
+## [11] robustbase_0.93-9           lattice_0.20-44            
+## [13] Radviz_0.9.2                ROCR_1.0-11                
+## [15] AUCell_1.14.0               scater_1.20.1              
+## [17] ggplot2_3.3.5               scuttle_1.2.0              
+## [19] jaccard_0.1.0               qvalue_2.24.0              
+## [21] dplyr_1.0.8                 ppcor_1.1                  
+## [23] MASS_7.3-54                 scLink_1.0.1               
+## [25] glasso_1.11                 RcisTarget_1.12.0          
+## [27] fgsea_1.18.0                SeuratObject_4.0.4         
+## [29] Seurat_4.1.0                GENIE3_1.14.0              
+## [31] SingleCellExperiment_1.14.1 SummarizedExperiment_1.22.0
+## [33] Biobase_2.52.0              GenomicRanges_1.44.0       
+## [35] GenomeInfoDb_1.28.1         IRanges_2.26.0             
+## [37] S4Vectors_0.30.0            BiocGenerics_0.38.0        
+## [39] MatrixGenerics_1.4.0        matrixStats_0.59.0         
+## [41] PUIC_0.1.0                  reshape2_1.4.4             
+## [43] minet_3.50.0                pbapply_1.5-0              
+## [45] purrr_0.3.4                
 ## 
 ## loaded via a namespace (and not attached):
 ##   [1] utf8_1.2.1                reticulate_1.20          
 ##   [3] R.utils_2.10.1            tidyselect_1.1.2         
 ##   [5] RSQLite_2.2.7             AnnotationDbi_1.54.1     
-##   [7] htmlwidgets_1.5.4         BiocParallel_1.26.1      
-##   [9] grid_4.1.1                Rtsne_0.15               
-##  [11] ScaledMatrix_1.0.0        munsell_0.5.0            
+##   [7] htmlwidgets_1.5.4         grid_4.1.1               
+##   [9] BiocParallel_1.26.1       Rtsne_0.15               
+##  [11] munsell_0.5.0             ScaledMatrix_1.0.0       
 ##  [13] codetools_0.2-18          ica_1.0-2                
 ##  [15] future_1.24.0             miniUI_0.1.1.1           
 ##  [17] withr_2.5.0               spatstat.random_2.1-0    
@@ -454,8 +453,8 @@ TFs) into homologenes, then replace these data through parameters <code>prior_ne
 ##  [79] fitdistrplus_1.1-8        hms_1.1.1                
 ##  [81] patchwork_1.1.1           mime_0.12                
 ##  [83] evaluate_0.15             xtable_1.8-4             
-##  [85] XML_3.99-0.6              gridExtra_2.3            
-##  [87] shape_1.4.6               compiler_4.1.1           
+##  [85] XML_3.99-0.6              shape_1.4.6              
+##  [87] gridExtra_2.3             compiler_4.1.1           
 ##  [89] tibble_3.1.2              KernSmooth_2.23-20       
 ##  [91] crayon_1.5.1              R.oo_1.24.0              
 ##  [93] htmltools_0.5.2           segmented_1.3-4          
@@ -470,18 +469,18 @@ TFs) into homologenes, then replace these data through parameters <code>prior_ne
 ## [111] digest_0.6.27             sctransform_0.3.3        
 ## [113] RcppAnnoy_0.0.19          graph_1.70.0             
 ## [115] spatstat.data_2.1-2       Biostrings_2.60.1        
-## [117] fastmatch_1.1-0           rmarkdown_2.9            
-## [119] leiden_0.3.9              uwot_0.1.11              
+## [117] rmarkdown_2.9             leiden_0.3.9             
+## [119] fastmatch_1.1-0           uwot_0.1.11              
 ## [121] DelayedMatrixStats_1.14.0 GSEABase_1.54.0          
 ## [123] kernlab_0.9-29            shiny_1.7.1              
 ## [125] lifecycle_1.0.1           nlme_3.1-152             
 ## [127] jsonlite_1.7.2            BiocNeighbors_1.10.0     
 ## [129] viridisLite_0.4.0         fansi_0.5.0              
-## [131] pillar_1.7.0              KEGGREST_1.32.0          
-## [133] fastmap_1.1.0             httr_1.4.2               
-## [135] DEoptimR_1.0-10           survival_3.2-11          
-## [137] glue_1.4.2                png_0.1-7                
-## [139] iterators_1.0.14          bit_4.0.4                
+## [131] pillar_1.7.0              DEoptimR_1.0-10          
+## [133] KEGGREST_1.32.0           fastmap_1.1.0            
+## [135] httr_1.4.2                survival_3.2-11          
+## [137] glue_1.4.2                iterators_1.0.14         
+## [139] png_0.1-7                 bit_4.0.4                
 ## [141] mixtools_1.2.0            class_7.3-19             
 ## [143] stringi_1.6.2             sass_0.4.1               
 ## [145] blob_1.2.1                BiocSingular_1.8.1       
